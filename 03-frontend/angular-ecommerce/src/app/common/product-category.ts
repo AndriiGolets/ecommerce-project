@@ -1,8 +1,6 @@
 export class ProductCategory {
 
-  id!: number;
-  categoryName!: string;
-
-
+ public id!: number;
+ public categoryName!: string;
 
 }
