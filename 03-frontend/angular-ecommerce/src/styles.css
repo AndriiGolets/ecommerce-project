@@ -729,12 +729,12 @@ select {
 }
 
 table.table.table-bordered {
-  border: 1px solid #ccc;
+  border: 2px solid #ccc;
   background: #fff
 }
 
 .table-bordered td, .table-bordered th {
-  border: 1px solid #dee2e6
+  border: 2px solid #dee2e6
 }
 
 table.table.table-bordered th {
