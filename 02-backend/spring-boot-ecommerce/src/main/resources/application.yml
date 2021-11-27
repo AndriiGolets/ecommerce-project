@@ -17,4 +17,4 @@ spring:
       base-path: /api
 logging:
   level:
-    root: info
+    root: debug
