@@ -19,7 +19,7 @@ import javax.persistence.metamodel.Type;
 @AllArgsConstructor
 public class DataRestConfig implements RepositoryRestConfigurer {
 
-    public static final HttpMethod[] ONLY_READ = new HttpMethod[]{HttpMethod.PUT, HttpMethod.POST, HttpMethod.DELETE};
+    public static final HttpMethod[] ONLY_READ = new HttpMethod[]{HttpMethod.PUT, HttpMethod.POST, HttpMethod.DELETE, HttpMethod.PATCH};
     private EntityManager entityManager;
 
     @Override
@@ -29,6 +29,9 @@ public class DataRestConfig implements RepositoryRestConfigurer {
         configureUnsupportedActions(config, ONLY_READ, State.class);
         configureUnsupportedActions(config, ONLY_READ, Country.class);
         exposeIds(config);
+
+        cors.addMapping("/api/**")
+                .allowedOrigins("http://localhost:4200");
     }
 
     private void exposeIds(RepositoryRestConfiguration config){

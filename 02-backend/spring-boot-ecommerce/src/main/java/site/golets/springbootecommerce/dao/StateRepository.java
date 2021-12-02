@@ -8,7 +8,6 @@ import site.golets.springbootecommerce.entity.State;
 
 import java.util.List;
 
-@CrossOrigin("http://localhost:4200")
 @RepositoryRestResource
 public interface StateRepository extends JpaRepository<State, Integer> {
 

@@ -3,7 +3,6 @@ package site.golets.springbootecommerce.entity;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;
-import lombok.ToString;
 
 import javax.persistence.*;
 import java.util.HashSet;
@@ -27,6 +26,7 @@ public class Customer {
 
     private String lastName;
 
+    @Column(unique=true)
     private String email;
 
     public void add(Order order) {
