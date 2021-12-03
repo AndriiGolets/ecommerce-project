@@ -6,7 +6,7 @@ import site.golets.springbootecommerce.dto.Purchase;
 import site.golets.springbootecommerce.dto.PurchaseResponse;
 import site.golets.springbootecommerce.service.CheckoutService;
 
-@CrossOrigin("http://localhost:4200")
+
 @RestController
 @RequestMapping("/api/checkout")
 @AllArgsConstructor
@@ -16,6 +16,7 @@ public class CheckoutController {
 
     @PostMapping("/purchase")
     public PurchaseResponse placeOrder(@RequestBody Purchase purchase) {
+
         return checkoutService.placeOrder(purchase);
     }
 

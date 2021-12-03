@@ -20,3 +20,9 @@ spring:
 logging:
   level:
     root: info
+
+okta:
+  oauth2:
+    client-id: 0oa2y7chn3T1iGRG85d7
+    client-secret: J1NoTZAcgF9dHLJX1VHtmcjCyUw9f3U3XoFIq_B_
+    issuer: https://dev-28051690.okta.com/oauth2/default
