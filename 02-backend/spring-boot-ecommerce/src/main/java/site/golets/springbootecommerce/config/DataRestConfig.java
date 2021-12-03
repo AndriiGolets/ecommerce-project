@@ -7,13 +7,12 @@ import org.springframework.data.rest.core.config.RepositoryRestConfiguration;
 import org.springframework.data.rest.webmvc.config.RepositoryRestConfigurer;
 import org.springframework.http.HttpMethod;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
-import site.golets.springbootecommerce.entity.Country;
-import site.golets.springbootecommerce.entity.Product;
-import site.golets.springbootecommerce.entity.ProductCategory;
-import site.golets.springbootecommerce.entity.State;
+import site.golets.springbootecommerce.entity.*;
 
 import javax.persistence.EntityManager;
 import javax.persistence.metamodel.Type;
+import java.util.Arrays;
+import java.util.List;
 
 @Configuration
 @AllArgsConstructor
@@ -24,17 +23,21 @@ public class DataRestConfig implements RepositoryRestConfigurer {
 
     @Override
     public void configureRepositoryRestConfiguration(RepositoryRestConfiguration config, CorsRegistry cors) {
-        configureUnsupportedActions(config, ONLY_READ, Product.class);
-        configureUnsupportedActions(config, ONLY_READ, ProductCategory.class);
-        configureUnsupportedActions(config, ONLY_READ, State.class);
-        configureUnsupportedActions(config, ONLY_READ, Country.class);
+        Class[] entityClasses = new Class[]{
+                Product.class,
+                ProductCategory.class,
+                State.class,
+                Country.class,
+                Order.class
+        };
+        Arrays.stream(entityClasses).forEach(c -> configureUnsupportedActions(config, ONLY_READ, c));
         exposeIds(config);
 
         cors.addMapping("/api/**")
                 .allowedOrigins("http://localhost:4200");
     }
 
-    private void exposeIds(RepositoryRestConfiguration config){
+    private void exposeIds(RepositoryRestConfiguration config) {
         config.exposeIdsFor(entityManager.getMetamodel().getEntities().stream().map(Type::getJavaType).toArray(Class[]::new));
     }
 
